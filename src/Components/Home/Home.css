@@ -1,0 +1,16 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Rubik+Vinyl&display=swap');
+
+
+.heading{
+    text-align: center;
+    font-family: 'Rubik Vinyl', cursive;
+    color: rgb(56, 20, 90);
+    font-size: 50px;
+}
+
+body{
+    font-family: 'Caveat Brush', cursive;
+    font-size: 25px;
+    color: rgb(56, 20, 90);
+}
