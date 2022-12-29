@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Input from '../Input/Input'
 import "./Home.css"
 import { generateRegex } from '../../Utils/generateRegex'
+import {FiCopy} from "react-icons/fi"
 
 function Home() {
   const [inputdata, Setinputdata] = useState({
@@ -15,6 +16,7 @@ function Home() {
 
   const [regex,Setregex]=useState("")
   const [result,Setresult]=useState("")
+  const [iscopy,Setiscopy]=useState("copied")
 
   const checkFunc=(e:React.ChangeEvent<HTMLInputElement>)=>{
     const {name, checked}=e.target
@@ -23,6 +25,14 @@ function Home() {
 
   const handleClick=()=>{
     generateRegex(inputdata,Setregex,Setresult)
+  }
+
+  const copyText=()=>{
+    navigator.clipboard.writeText(regex)
+    Setiscopy("copied-show")
+    setTimeout(()=>{
+      Setiscopy("copied")
+    },1000)
   }
 
   useEffect(()=>{
@@ -68,7 +78,11 @@ function Home() {
           <div>
             Regex Pattern
           </div>
-          <div className='regex'>{regex}</div>
+          <div className='regex' style={{"display":"grid","gridTemplateColumns":"1fr auto","alignItems":"center",position:"relative","overflow":"hidden"}}>
+            <div>{regex}</div>
+            <FiCopy className='copy-icon' onClick={copyText}/>
+            <div className={iscopy}>Copied !</div>
+          </div>
           <div style={{"marginTop":"10px"}}>
             Result
           </div>
