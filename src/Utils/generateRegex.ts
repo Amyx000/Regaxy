@@ -19,7 +19,6 @@ export const generateRegex = (
 
   let regex = ["/"];
   let regexInclude = ["["];
-  let regexExclude = ["|", "[^"];
   let combine:string
 
   if (
@@ -30,34 +29,24 @@ export const generateRegex = (
   ) {
     if (inputdata.checkString) {
       regexInclude.push("a-z");
-    } else {
-      regexExclude.push("a-z");
-    }
+    } 
     if (inputdata.checkNum) {
       regexInclude.push("\\d");
-    } else {
-      regexExclude.push("\\d");
-    }
+    } 
     if (inputdata.checkSymb) {
       regexInclude.push("!-\\/:-@[-`{-~");
-    } else {
-      regexExclude.push("!-\\/:-@[-`{-~");
-    }
+    } 
     if (inputdata.checkSpace) {
       regexInclude.push("\\s");
-    } else {
-      regexExclude.push("\\s");
     }
 
     regexInclude.push("]");
-    regexExclude.push("]");
-    combine= regexInclude.concat(regexExclude).join("")
+ 
   } else {
     regexInclude.push("\\w\\d\\s!-\\/:-@[-`{-~");
     regexInclude.push("]");
-    regexExclude.push("]");
-    combine= regexInclude.join("")
   }
+  combine= regexInclude.join("")
   regex.push(combine)
 
   if (inputdata.caseSensitive) {
