@@ -65,7 +65,7 @@ export const generateRegex = (
   } else {
     regex.push("/gi");
   }
-  const match = inputdata.string.match(new RegExp(combine,`g${!inputdata.caseSensitive&&"i"}`))||[]
+  const match = inputdata.string.match(new RegExp(combine,`g${!inputdata.caseSensitive?"i":""}`))||[]
   Setregex(regex.join(""));
   Setresult(match.join(""))
 };
